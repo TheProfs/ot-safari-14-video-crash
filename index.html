@@ -90,11 +90,6 @@
 
     publisher.addEventListener('videoElementCreated', e => {
       window.publisherElem = e.element
-
-      setTimeout(() => {
-        console.log('settings srcobject')
-        document.querySelector('#pub-video').srcObject = e.element.srcObject
-      }, 25000)
     })
 
     // Connect to the session
