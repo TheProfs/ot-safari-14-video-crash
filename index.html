@@ -76,7 +76,7 @@
       }, handleError)
 
       subscriber.addEventListener('videoElementCreated', e => {
-        //document.querySelector('#sub-video').srcObject = e.element.srcObject
+        document.querySelector('#sub-video').srcObject = e.element.srcObject
       })
 
       subscribers.push(subscriber)
@@ -89,8 +89,10 @@
     }, handleError)
 
     publisher.addEventListener('videoElementCreated', e => {
-      document.body.appendChild(e.element)
       window.publisherElem = e.element
+
+      document.body.appendChild(e.element)
+      document.querySelector('#pub-video').srcObject = e.element.srcObject
     })
 
     // Connect to the session
