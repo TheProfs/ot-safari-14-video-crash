@@ -1,10 +1,33 @@
 <html>
   <head>
       <title> OpenTok Safari 14 Video crash </title>
-      <script src="https://static.opentok.com/v2.17.7/js/opentok.min.js"></script>
+      <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
   </head>
   <body>
-    <div id="videos"></div>
+    <h2>  Pub Video </h2>
+
+    <video
+      id="pubVideo"
+      muted="true"
+      onloadedmetadata="this.muted = true"
+      autoplay="true"
+      playsinline="true"
+      ondragstart="event.preventDefault();"
+      draggable="true">
+      Sorry, Web RTC is not available in your browser
+    </video>
+
+    <h2>  Sub Video </h2>
+    <video
+      id="subVideo"
+      muted="true"
+      onloadedmetadata="this.muted = true"
+      autoplay="true"
+      playsinline="true"
+      ondragstart="event.preventDefault();"
+      draggable="true">
+      Sorry, Web RTC is not available in your browser
+    </video>
   </body>
 </html>
 
@@ -53,7 +76,7 @@
       }, handleError)
 
       subscriber.addEventListener('videoElementCreated', e => {
-        document.querySelector('#videos').appendChild(e.element)
+        document.querySelector('#sub-video').srcObject = e.element.srcObject
       })
 
       subscribers.push(subscriber)
@@ -61,12 +84,12 @@
 
     // Create a publisher
     window.publisher = OT.initPublisher(null, {
-      publishVideo: false,
+      publishVideo: true,
       insertDefaultUI: false
     }, handleError)
 
     publisher.addEventListener('videoElementCreated', e => {
-      document.querySelector('#videos').appendChild(e.element)
+      document.querySelector('#pub-video').srcObject = e.element.srcObject
     })
 
     // Connect to the session
