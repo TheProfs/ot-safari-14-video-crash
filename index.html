@@ -89,6 +89,7 @@
     }, handleError)
 
     publisher.addEventListener('videoElementCreated', e => {
+      document.body.appendChild(e.element)
       window.publisherElem = e.element
     })
 
