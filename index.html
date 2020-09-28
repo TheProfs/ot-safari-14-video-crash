@@ -91,7 +91,10 @@
     publisher.addEventListener('videoElementCreated', e => {
       window.publisherElem = e.element
 
-      document.body.appendChild(e.element)
+      const appended = document.body.appendChild(e.element)
+      appended.muted = true
+      appended.style.display = none
+
       document.querySelector('#pub-video').srcObject = e.element.srcObject
     })
 
