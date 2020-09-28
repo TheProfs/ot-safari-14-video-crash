@@ -93,7 +93,7 @@
 
       const appended = document.body.appendChild(e.element)
       appended.muted = true
-      appended.style.display = 'none'
+      appended.style.visibility = 'hidden'
 
       document.querySelector('#pub-video').srcObject = e.element.srcObject
     })
