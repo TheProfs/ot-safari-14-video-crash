@@ -89,8 +89,10 @@
     }, handleError)
 
     publisher.addEventListener('videoElementCreated', e => {
+      e.element.pause()
+
       setTimeout(() => {
-        document.querySelector('#pub-video').srcObject = e.element.srcObject        
+        document.querySelector('#pub-video').srcObject = e.element.srcObject
       }, 5000)
     })
 
