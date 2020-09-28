@@ -89,7 +89,9 @@
     }, handleError)
 
     publisher.addEventListener('videoElementCreated', e => {
-      document.querySelector('#pub-video').srcObject = e.element.srcObject
+      setTimeout(() => {
+        document.querySelector('#pub-video').srcObject = e.element.srcObject        
+      }, 5000)
     })
 
     // Connect to the session
