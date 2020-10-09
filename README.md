@@ -1,19 +1,29 @@
 # ot-safari-14-video-crash
 
-Demo of Vonage OpentokJS crash on Safari 14.
+Demo of Vonage OpentokJS video crash on Safari 14.
+
+## Overview
+
+When passing `publishVideo: false` to `OT.initPublisher` and publishing video
+*after* the call starts, the other party can't see my published video.
+This is not reproducible on Vonage SDK 2.17. It's only reproducible on
+SDK 2.18+.
 
 ## Steps to reproduce:
 
-- Serve this page locally on `http://0.0.0.0:8000`
-- Visit, using Safari 14, `http://0.0.0.0:8000`.
-- Open another tab and visit `http://0.0.0.0:8000` again.
+- Visit https://ot-safari-14-video-crash.herokuapp.com with MacOS Safari 14.
+- Visit http://ot-safari-14-video-crash.herokuapp.com with iOS Safari 14.
+- The call starts without video.
+- Press "Publish Video".
 
 ## Expected Result:
 
-- Both tabs can see their video and the other participant video. In short
-  they can see each other.
+- The other party can see my video after I press "Publish Video".
 
 ## Actual Result
 
-- As soon as the 2nd tab joins the session, the 1st tabs video stops. There
-  is no way for both participants to see each other.
+- The other party *cannot* see my published video.
+
+## Notes
+
+If we use SDK version 2.17.7 it works. It doesn't work just on SDK 2.18+.
