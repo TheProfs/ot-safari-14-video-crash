@@ -9,12 +9,15 @@ When passing `publishVideo: false` to `OT.initPublisher` and publishing video
 This is not reproducible on Vonage SDK 2.17. It's only reproducible on
 SDK 2.18+.
 
+If the video is started (published) before the other party joins, then it works.
+
 ## Steps to reproduce:
 
 - Visit https://ot-safari-14-video-crash.herokuapp.com with MacOS Safari 14.
 - Visit http://ot-safari-14-video-crash.herokuapp.com with iOS Safari 14.
-- The call starts without video.
-- Press "Publish Video".
+- After *both* parties join the link, Press "Publish Video".
+
+**Note:** Do not press "Publish Video" until both parties visit the link!
 
 ## Expected Result:
 
