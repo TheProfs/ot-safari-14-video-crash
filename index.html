@@ -4,30 +4,9 @@
       <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
   </head>
   <body>
-    <h2>  Pub Video </h2>
+    <h2>  Videos </h2>
 
-    <video
-      id="pub-video"
-      muted="true"
-      onloadedmetadata="this.muted = true"
-      autoplay="true"
-      playsinline="true"
-      ondragstart="event.preventDefault();"
-      draggable="true">
-      Sorry, Web RTC is not available in your browser
-    </video>
-
-    <h2>  Sub Video </h2>
-    <video
-      id="sub-video"
-      muted="true"
-      onloadedmetadata="this.muted = true"
-      autoplay="true"
-      playsinline="true"
-      ondragstart="event.preventDefault();"
-      draggable="true">
-      Sorry, Web RTC is not available in your browser
-    </video>
+    <div id="videos"></div>
   </body>
 </html>
 
@@ -76,7 +55,7 @@
       }, handleError)
 
       subscriber.addEventListener('videoElementCreated', e => {
-        document.querySelector('#sub-video').srcObject = e.element.srcObject
+        document.querySelector('#videos').appendChild(e.element)
       })
 
       subscribers.push(subscriber)
@@ -89,14 +68,7 @@
     }, handleError)
 
     publisher.addEventListener('videoElementCreated', e => {
-      window.publisherElem = e.element
-
-      const appended = document.body.appendChild(e.element)
-      appended.muted = true
-      appended.style.position = 'fixed'
-      appended.style.top = '-999999px'
-
-      document.querySelector('#pub-video').srcObject = e.element.srcObject
+      document.querySelector('#videos').appendChild(e.element)
     })
 
     // Connect to the session
